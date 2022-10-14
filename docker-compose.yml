@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  mongo_db:
+  container_name: nodejs
+  restarts: always
+  volumes:
+    - mongo_db:/data/db
+  
+api:
+  image: mongo:5.0
+  build: .
+  ports:
+    - YOUR PORT RUNNING
+  environment:
+    PORT: YOUR PORT RUNNING
+    MONGODB_URI: YOUR URL MONGODB
+  depends_on:
+    - mongo_db
+
+volumes:
+  mongo_db: {}
