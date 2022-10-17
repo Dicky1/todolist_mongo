@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const {createTask, updateTask, deleteTask, getSingleTask, getAllTasks} = require('../controllers/todoController');
+const {createActivites, updateActivites, deleteActivites, getSingleActivites, getAllActivites} = require('../controllers/todoController');
 
-router.route('/').post(createTask);
-router.route('/:id').put(updateTask);
-router.route('/:id').delete(deleteTask);
-router.route('/:id').get(getSingleTask);
-router.route('/').get(getAllTasks);
+router.route('/').post(createActivites);
+router.route('/:id').put(updateActivites);
+router.route('/:id').delete(deleteActivites);
+router.route('/:id').get(getSingleActivites);
+router.route('/').get(getAllActivites);
 
 
 

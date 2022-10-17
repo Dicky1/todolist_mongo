@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 const asyncHandler = require('express-async-handler');
 
-const Todo = require('../models/todoModel');
+const Activites = require('../models/todoModel');
 
 /**
  * @desc For crate task 
  * @route /api/task
  * @access Public
  */
-exports.createTask = asyncHandler(async (req, res) => {
-    const {task, active} = req.body
-    const todo = await Todo.create({task, active});
+exports.createActivites = asyncHandler(async (req, res) => {
+    const {title, activity_group_id} = req.body
+    const activites = await Activites.create({title, activity_group_id});
     res.status(201).json({
         success: true,
-        data: todo,
+        data: activites,
         message: 'Task is created successfully'
     })
 })
@@ -23,23 +23,23 @@ exports.createTask = asyncHandler(async (req, res) => {
  * @route /api/task/:id
  * @access Public
  */
- exports.updateTask = asyncHandler(async (req, res) => {
-    const {task, active} = req.body
-    const existTask = await Todo.findOne({ _id : req.params.id})
-    if(existTask){
-        existTask.task = task;
-        existTask.active = active
-        const updatedTask = await existTask.save();
+ exports.updateActivites = asyncHandler(async (req, res) => {
+    const {title, activity_group_id} = req.body
+    const existActivites = await Activites.findOne({ _id : req.params.id})
+    if(existActivites){
+        existActivites.title = title;
+        existActivites.activity_group_id = activity_group_id
+        const updatedActivites = await existActivites.save();
         res.status(200).json({
             success: true,
-            data: updatedTask,
-            message: 'Task is updated successfully'
+            data: updatedActivites,
+            message: 'Activites is updated successfully'
         })
     }else{
         res.status(401).json({
             success: false,
             data: null,
-            message: 'Task is Not Found'
+            message: 'Activites is Not Found'
         })
     }
    
@@ -51,8 +51,8 @@ exports.createTask = asyncHandler(async (req, res) => {
  * @route /api/task/:id
  * @access Public
  */
- exports.deleteTask = asyncHandler(async (req, res) => {
-    const existTask = await Todo.findOne({ _id : req.params.id})
+ exports.deleteActivites = asyncHandler(async (req, res) => {
+    const existTask = await Activites.findOne({ _id : req.params.id})
     if(existTask){
         await existTask.remove();
         res.status(200).json({
@@ -75,19 +75,19 @@ exports.createTask = asyncHandler(async (req, res) => {
  * @route /api/task/:id
  * @access Public
  */
- exports.getSingleTask = asyncHandler(async (req, res) => {
-    const existTask = await Todo.findOne({ _id : req.params.id})
-    if(existTask){
+ exports.getSingleActivites = asyncHandler(async (req, res) => {
+    const existActivites = await Activites.findOne({ _id : req.params.id})
+    if(existActivites){
         res.status(200).json({
             success: true,
-            data:existTask,
-            message: 'Task is fetched successfully'
+            data:Activites,
+            message: 'Activity is fetched successfully'
         })
     }else{
         res.status(401).json({
             success: false,
             data: null,
-            message: 'Task is Not Found'
+            message: 'Activity is Not Found'
         })
     }
    
@@ -100,19 +100,19 @@ exports.createTask = asyncHandler(async (req, res) => {
  * @route /api/task
  * @access Public
  */
- exports.getAllTasks = asyncHandler(async (req, res) => {
-    const allTasks = await Todo.find({})
-    if(allTasks){
+ exports.getAllActivites = asyncHandler(async (req, res) => {
+    const allActivites = await Activites.find({})
+    if(allActivites){
         res.status(200).json({
             success: true,
-            data:allTasks,
-            message: 'All Tasks are deleted successfully'
+            data:allActivites,
+            message: 'All Activites are deleted successfully'
         })
     }else{
         res.status(401).json({
             success: false,
             data: null,
-            message: 'Tasks are Not Found'
+            message: ' are  Activites Not Found'
         })
     }
    
