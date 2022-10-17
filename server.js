@@ -17,7 +17,7 @@ if(process.env.MODE === 'development'){
 }
 const PORT = process.env.PORT || 3000;
 
-app.use('/api/task', todoRoute)
+app.use('/api/todo', todoRoute)
 
 app.get('/', (req, res) => {
     res.send('API is running good')

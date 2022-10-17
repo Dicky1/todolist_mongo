@@ -28,7 +28,7 @@ exports.createActivites = asyncHandler(async (req, res) => {
     const existActivites = await Activites.findOne({ _id : req.params.id})
     if(existActivites){
         existActivites.title = title;
-        existActivites.activity_group_id = activity_group_id
+        existActivites.activity_group_id = activity_group_id;
         const updatedActivites = await existActivites.save();
         res.status(200).json({
             success: true,
@@ -52,9 +52,9 @@ exports.createActivites = asyncHandler(async (req, res) => {
  * @access Public
  */
  exports.deleteActivites = asyncHandler(async (req, res) => {
-    const existTask = await Activites.findOne({ _id : req.params.id})
-    if(existTask){
-        await existTask.remove();
+    const existActivites = await Activites.findOne({ _id : req.params.id})
+    if(existActivites){
+        await existActivites.remove();
         res.status(200).json({
             success: true,
             message: 'Task is deleted successfully'

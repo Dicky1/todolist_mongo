@@ -9,6 +9,4 @@ router.route('/:id').delete(deleteActivites);
 router.route('/:id').get(getSingleActivites);
 router.route('/').get(getAllActivites);
 
-
-
 module.exports = router

@@ -6,7 +6,7 @@ const activites = mongoose.Schema({
         required: true
     },
     activity_group_id: {
-        type: Boolean,
+        type: String,
         default: true
     }
 });
@@ -17,7 +17,7 @@ const todos = mongoose.Schema({
         required: true
     },
     activity_group_id: {
-        type: Boolean,
+        type: String,
         default: true
     }
 });
